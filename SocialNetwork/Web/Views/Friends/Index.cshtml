@@ -1,0 +1,45 @@
+﻿@using Web.Models
+@model FriendsViewModel
+@{
+    ViewBag.Title = "Мои друзья";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Мои друзья</h2>
+@foreach (UserViewModel user in Model.Friends)
+{ 
+    <div>
+        @Html.ActionLink(user.LastName + " " + user.FirstName + " " + user.MiddleName, "Index", 
+            "Home",new { id = user.Id}, null)
+        (@Html.ActionLink("Написать сообщение", "NewMessage", "Messages",
+                new { UserToId = user.Id}, null)
+        или
+        @Html.ActionLink("Удалить из друзей", "DeleteFriend", "Friends",
+                new { id = user.Id}, null))
+    </div>
+}
+
+<h2>Мои входящие заявки в друзья</h2>
+@foreach (UserViewModel user in Model.IncomingRequests)
+{ 
+    <div>
+        @Html.ActionLink(user.LastName + " " + user.FirstName + " " + user.MiddleName, "Index", 
+            "Home",new { id = user.Id}, null)
+        (@Html.ActionLink("Принять заявку", "ConfirmFriendRequest", "Friends",
+                new { id = user.Id}, null)
+        или
+        @Html.ActionLink("Отклонить заявку", "RejectFriendRequest", "Friends",
+                new { id = user.Id}, null))
+    </div>
+}
+
+<h2>Мои исходящие заявки в друзья</h2>
+@foreach (UserViewModel user in Model.OutgoingRequests)
+{ 
+    <div>
+        @Html.ActionLink(user.LastName + " " + user.FirstName + " " + user.MiddleName, "Index", 
+            "Home",new { id = user.Id}, null)
+        (@Html.ActionLink("Отменить свою заявку", "CancelFriendRequest", "Friends",
+                new { id = user.Id}, null))
+    </div>
+}

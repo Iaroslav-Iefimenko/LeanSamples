@@ -1,0 +1,21 @@
+﻿@using Web.Models
+@model WallMessageViewModel
+@{
+    ViewBag.Title = "Новое сообщение на стене";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Новое сообщение на стене</h2>
+@using (Html.BeginForm())
+{ 
+    <p>
+        @Html.HiddenFor(x => x.AuthorId)
+        @Html.HiddenFor(x => x.AuthorName)
+        @Html.HiddenFor(x => x.WallOwnerId)
+        @Html.HiddenFor(x => x.CreatedDate)
+        Введите текст ообщения: <br />
+        @Html.TextAreaFor(x => x.Text)
+        @Html.ValidationMessageFor(x => x.Text)
+    </p>
+    <input type="submit" value="Отправить"/>
+}

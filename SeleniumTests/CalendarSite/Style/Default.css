@@ -1,0 +1,28 @@
+﻿div {
+    margin: 10px;
+}
+
+table {
+  border-collapse: collapse;
+    width: 300px;
+}
+
+td, th {
+  border: 1px solid black;
+  padding: 3px;
+  text-align: center;
+}
+
+th {
+  font-weight: bold;
+  background-color: #E6E6E6;
+}
+
+.currDayCell {
+    color: #FF0000;
+}
+
+.selectedDateCell {
+    font-weight: bold;
+    text-decoration: underline;
+}

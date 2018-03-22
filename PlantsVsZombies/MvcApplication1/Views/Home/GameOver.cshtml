@@ -1,0 +1,10 @@
+﻿@model Int32
+
+@{
+    Layout = null;
+    ViewBag.Title = "Игра закончена";
+}
+
+<h2>@Html.ActionLink("Зомби против растений","Index", "Home") | @Html.ActionLink("Лучшие результаты","BestResults", "Home") 
+| @Html.ActionLink("Мои лучшие результаты","MyBestResults", "Home") | @Html.ActionLink("Выход", "Logout", "Account")</h2>
+<div>Вы проиграли!!! Зомби уничтожены: @Convert.ToString(Model)</div>

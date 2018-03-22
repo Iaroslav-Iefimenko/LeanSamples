@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\IaroslavE\Documents\Visual Studio 2012\Projects\SocialNetwork\SocialNetworkTest.nunit" total="3" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2013-12-23" time="17:16:22">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5472" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="d:\NUnit-2.6.3\bin" machine-name="SW-DEV34" user="IaroslavE" user-domain="SWEETSOFT" />
+  <culture-info current-culture="ru-RU" current-uiculture="en-US" />
+  <test-suite type="Project" name="C:\Users\IaroslavE\Documents\Visual Studio 2012\Projects\SocialNetwork\SocialNetworkTest.nunit" executed="True" result="Success" success="True" time="0.421" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="C:\Users\IaroslavE\Documents\Visual Studio 2012\Projects\SocialNetwork\UnitTests\bin\Debug\UnitTests.dll" executed="True" result="Success" success="True" time="0.394" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="UnitTests" executed="True" result="Success" success="True" time="0.394" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="AccountControllerTests" executed="True" result="Success" success="True" time="0.327" asserts="0">
+                <results>
+                  <test-case name="UnitTests.AccountControllerTests.GetMembershipCreateStatusResultTextReturnsDuplicateEmailErrorText" description="Метод GetMembershipCreateStatusResultText() возвращает текст ошибки для DuplicateEmail" executed="True" result="Success" success="True" time="0.263" asserts="1" />
+                  <test-case name="UnitTests.AccountControllerTests.GetMembershipCreateStatusResultTextReturnsDuplicateUserNameErrorText" description="Метод GetMembershipCreateStatusResultText() возвращает текст ошибки для DuplicateUserName" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="UnitTests.AccountControllerTests.GetMembershipCreateStatusResultTextReturnsOtherErrorText" description="Метод GetMembershipCreateStatusResultText() возвращает текст ошибки Ошибка" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

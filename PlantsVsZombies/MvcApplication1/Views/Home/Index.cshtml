@@ -1,0 +1,96 @@
+﻿@using Models
+@using Newtonsoft.Json
+@model GameResultViewModel
+@{
+    Layout = null;
+    ViewBag.Title = "Зомби против растений";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/Utils.js"></script>
+    <script src="~/Scripts/Settings.js"></script>
+    <script src="~/Scripts/GraphicObject.js"></script>
+    <script src="~/Scripts/Pea.js"></script>
+    <script src="~/Scripts/PeaCanon.js"></script>
+    <script src="~/Scripts/Zombie.js"></script>
+    <script src="~/Scripts/Main.js"></script>
+    <script type="text/javascript">
+        function startGame() {
+            var settings = new Settings();
+            
+            var data = @Html.Raw(JsonConvert.SerializeObject(Model.Settings));
+            
+            settings.MaxFinishedZombies = data.MaxFinishedZombies;
+            settings.MoneyOnStart = data.MoneyOnStart;
+            settings.PeaStepWidth = data.PeaStepWidth;
+            settings.PeaDamage = data.PeaDamage;
+            settings.ZombieCostOfDestroyed = data.ZombieCostOfDestroyed;
+            settings.ZombieStepWidth = data.ZombieStepWidth;
+    
+            //game field parameters
+            settings.TopShift = data.TopShift;
+            settings.BorderWidth = data.BorderWidth;
+            settings.SquareWidth = data.SquareWidth;
+            settings.SquareHeight = data.SquareHeight;
+            settings.LinesQuantity = data.LinesQuantity;
+            settings.VLinesQuantity = data.VLinesQuantity;
+
+            //timers
+            settings.MainInterval = data.MainInterval;
+            settings.ZombiesCreateInterval = data.ZombiesCreateInterval;
+
+            //colors
+            settings.BackgroundColor = data.BackgroundColor;
+            settings.BorderColor = data.BorderColor;
+            settings.TextColor = data.TextColor;
+            settings.FontName = data.FontName;
+            settings.DeskColor1 = data.DeskColor1;
+            settings.DeskColor2 = data.DeskColor2;
+
+            //captions
+            settings.StartText = data.StartText;
+            settings.StartedText = data.StartedText;
+            settings.StartCaptionX = data.StartCaptionX;
+            settings.StartCaptionY = data.StartCaptionY;
+            settings.StartCaptionWidth = data.StartCaptionWidth;
+            settings.StartCaptionHeight = data.StartCaptionHeight;
+    
+            settings.ZombiesFinishedText = data.ZombiesFinishedText;
+            settings.ZombiesFinishedCaptionX = data.ZombiesFinishedCaptionX;
+            settings.ZombiesFinishedCaptionY = data.ZombiesFinishedCaptionY;
+            settings.ZombiesFinishedX = data.ZombiesFinishedX;
+            settings.ZombiesFinishedY = data.ZombiesFinishedY;
+    
+            settings.MoneyText = data.MoneyText;
+            settings.MoneyCaptionX = data.MoneyCaptionX;
+            settings.MoneyCaptionY = data.MoneyCaptionY;
+            settings.MoneyX = data.MoneyX;
+            settings.MoneyY = data.MoneyY;
+    
+            settings.ZombiesDestroyedText = data.ZombiesDestroyedText;
+            settings.ZombiesDestroyedCaptionX = data.ZombiesDestroyedCaptionX;
+            settings.ZombiesDestroyedCaptionY = data.ZombiesDestroyedCaptionY;
+            settings.ZombiesDestroyedX = data.ZombiesDestroyedX;
+            settings.ZombiesDestroyedY = data.ZombiesDestroyedY;
+    
+            //Image paths
+            settings.ZombieImgSrc = data.ZombieImgSrc;
+            settings.PeaCanonImgSrc = data.PeaCanonImgSrc;
+            settings.PeaImgSrc = data.PeaImgSrc;
+            
+            var game = new PlantsVsZombiesGame(settings);
+        }    
+    </script>
+
+</head>
+<body  onload="startGame()">
+    <h2>Зомби против растений | @Html.ActionLink("Лучшие результаты","BestResults", "Home") 
+| @Html.ActionLink("Мои лучшие результаты","MyBestResults", "Home") | @Html.ActionLink("Выход", "Logout", "Account")</h2>
+    <div style="margin:5px">
+        <canvas id="myCanvas" width="800" height="600" />
+    </div>
+</body>
+</html>

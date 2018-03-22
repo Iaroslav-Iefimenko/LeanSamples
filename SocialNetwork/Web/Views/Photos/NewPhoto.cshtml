@@ -1,0 +1,20 @@
+﻿@using Web
+@model Web.Models.PhotoViewModel
+@{
+    ViewBag.Title = "Новая фотография";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Новая фотография</h2>
+@using(Html.BeginForm("NewPhoto", "Photos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.UserId)
+    @Html.HiddenFor(x => x.CreatedDate)
+    <div>
+        Фотография @Html.ImageUpload("Image")
+    </div>
+    <div>
+        Комментарий @Html.TextBoxFor(x => x.Comment)
+    </div>
+    <input type="submit" value="Добавить"/>
+}

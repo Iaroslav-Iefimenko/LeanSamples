@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Selenium tests</title>
+    <link href="Style/Default.css" rel="stylesheet" />
+    <script src="Scripts/Calendar.js"></script>
+    <script>
+        function btnCreateCalendarClick() {
+            Calendar.CreateCalendar("CalendarPlace");
+        }
+
+        function btnDeleteCalendarClick() {
+            Calendar.DeleteCalendar("CalendarPlace");
+        }
+        
+        function btnGetSelectedDateClick() {
+            var elem = document.getElementById("txtSelectedDate");
+            var date = Calendar.GetSelectedDate("CalendarPlace");
+            elem.value = date;
+        }
+
+        function btnSetSelectedDateClick() {
+            var elemYear = document.getElementById("txtYear");
+            var elemMonth = document.getElementById("txtMonth");
+            var elemDate = document.getElementById("txtDate");
+            Calendar.SetSelectedDate("CalendarPlace", elemYear.value, elemMonth.value, elemDate.value);
+            elemYear.value = "";
+            elemMonth.value = "";
+            elemDate.value = "";
+        }
+        
+        function btnCreateCalendar2Click() {
+            Calendar.CreateCalendar("CalendarPlace2");
+        }
+
+        function btnDeleteCalendar2Click() {
+            Calendar.DeleteCalendar("CalendarPlace2");
+        }
+        
+        function btnGetSelectedDate2Click() {
+            var date = Calendar.GetSelectedDate("CalendarPlace2");
+            var elem = document.getElementById("txtSelectedDate2");
+            elem.value = date;
+        }
+
+        function btnSetSelectedDate2Click() {
+            var elemYear = document.getElementById("txtYear2");
+            var elemMonth = document.getElementById("txtMonth2");
+            var elemDate = document.getElementById("txtDate2");
+            Calendar.SetSelectedDate("CalendarPlace2", elemYear.value, elemMonth.value, elemDate.value);
+            elemYear.value = "";
+            elemMonth.value = "";
+            elemDate.value = "";
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input id="btnCreateCalendar" type="button" value="Create first calendar" onclick="btnCreateCalendarClick()"/>
+        <input id="btnDeleteCalendar" type="button" value="Delete first calendar" onclick="btnDeleteCalendarClick()"/>
+        <input id="btnCreateCalendar2" type="button" value="Create second calendar" onclick="btnCreateCalendar2Click()"/>
+        <input id="btnDeleteCalendar2" type="button" value="Delete second calendar" onclick="btnDeleteCalendar2Click()"/>
+    </div>
+    <div id="CalendarPlace"></div>
+    <div>Test elements for first calendar. Create calendar before testing.</div>
+    <div>
+        <input id="btnGetSelectedDate" type="button" value="Get selected date" onclick="btnGetSelectedDateClick()"/>
+        Selected date: <input id="txtSelectedDate" type="text" readonly="readonly"/>
+        <input id="btnSetSelectedDate" type="button" value="Set selected date" onclick="btnSetSelectedDateClick()"/>
+        Year: <input id="txtYear" type="text" />
+        Month: <input id="txtMonth" type="text" />
+        Day: <input id="txtDate" type="text" />
+    </div>
+    <div id="CalendarPlace2"></div>
+    <div>Test elements for second calendar. Create calendar before testing.</div>
+    <div>
+        <input id="btnGetSelectedDate2" type="button" value="Get selected date" onclick="btnGetSelectedDate2Click()"/>
+        Selected date: <input id="txtSelectedDate2" type="text" readonly="readonly"/>
+        <input id="btnSetSelectedDate2" type="button" value="Set selected date" onclick="btnSetSelectedDate2Click()"/>
+        Year: <input id="txtYear2" type="text" />
+        Month: <input id="txtMonth2" type="text" />
+        Day: <input id="txtDate2" type="text" />
+    </div>
+</body>
+</html>

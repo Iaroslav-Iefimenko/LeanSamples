@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]C:\Users\IaroslavE\Documents\Visual Studio 2012\Projects\SocialNetwork\SocialNetworkTest.nunit</TopNode>
+  <SelectedNode>[0-1000]C:\Users\IaroslavE\Documents\Visual Studio 2012\Projects\SocialNetwork\SocialNetworkTest.nunit</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]C:\Users\IaroslavE\Documents\Visual Studio 2012\Projects\SocialNetwork\SocialNetworkTest.nunit" Expanded="true" />
+    <Node UniqueName="[0-1005]C:\Users\IaroslavE\Documents\Visual Studio 2012\Projects\SocialNetwork\UnitTests\bin\Debug\UnitTests.dll" Expanded="true" />
+    <Node UniqueName="[0-1006]UnitTests" Expanded="true" />
+    <Node UniqueName="[0-1001]UnitTests.AccountControllerTests" Expanded="true" />
+  </Nodes>
+</VisualState>

@@ -1,0 +1,27 @@
+﻿@using Web.Models
+@model IEnumerable<SearchUserData>
+@{
+    ViewBag.Title = "Поиск пользователей";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Поиск пользователей</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        <p>Попробуйте найти пользователя по ФИО:</p> 
+        <p>Фамилия: @Html.TextBox("lastName")</p>
+        <p>Имя: @Html.TextBox("firstName")</p>
+        <p>Отчество: @Html.TextBox("middleName")</p>
+        <input type="submit" value="Найти" />
+    }
+</div>
+@if (Model != null && Model.Any())
+{ 
+    <p>Результаты поиска:</p>
+    foreach (SearchUserData user in Model)
+    { 
+       <div>@Html.ActionLink(user.LastName + " " + user.FirstName + " " + user.MiddleName,
+         "Index", "Home", new {id = user.Id }, null)</div> 
+    }
+}

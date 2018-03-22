@@ -1,0 +1,77 @@
+﻿@using Web.Models
+@model UserViewModel
+@{
+    ViewBag.Title = Model.LastName + " " + Model.FirstName + " " + Model.MiddleName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="border:1px solid red; padding:5px;">
+    @if (Model.UserIsMe)
+    { 
+        <div>Это Вы!</div>
+    }
+    else if (Model.UserIsMyFriend)
+    { 
+        <div>
+            Это Ваш друг! @Html.ActionLink("Написать сообщение", "NewMessage", "Messages",
+                new { userToId = Model.Id}, null)
+            или @Html.ActionLink("Удалить из друзей", "DeleteFriend", "Friends",
+                new { id = Model.Id}, null)
+        </div>
+    }
+    else if (Model.FriendRequestIsSent)
+    { 
+        <div>
+            Вы отправили заявку в друзья! Необходимо подождать, пока пользователь подтвердит ее. 
+            @Html.ActionLink("Отменить заявку", "CancelFriendRequest", "Friends",
+                new { id = Model.Id}, null)
+        </div>
+    }
+    else
+    {
+        <div>
+            @Html.ActionLink("Добавить в друзья", "SendFriendRequest", "Friends",    
+                new { id = Model.Id}, null)
+        </div>
+    }
+</div>
+<p>
+    Фамилия : <b>@Model.LastName</b>
+</p>
+<p>
+    Имя : <b>@Model.FirstName</b>
+</p>
+<p>
+    Отчество : <b>@Model.MiddleName</b>
+</p>
+<p>@Html.ActionLink("Фотографии", "Index", "Photos", 
+                new { id = Model.Id}, null)</p>
+<h2>Стена</h2>
+<p>@Html.ActionLink("Написать сообщение", "NewWallMessage", 
+                new { wallOwnerId = Model.Id}, null)</p>
+<table>
+    <tr>
+        <th>Дата создания</th>
+        <th>Автор</th>
+        <th>Текст</th>
+        <th></th>
+    </tr>
+    @foreach (WallMessageViewModel mess in Model.WallMessages)
+    { 
+        <tr>
+            <td>@mess.CreatedDate</td>
+            <td>@mess.AuthorName</td>
+            <td>@mess.Text</td>
+            @if (mess.WallOwnerId == Model.Id || mess.AuthorId == Model.Id)
+            {
+                <td>
+                    @Html.ActionLink("Удалить", "DeleteWallMessage", new {id = Model.Id, messageId = mess.Id})
+                </td>
+            }
+            else
+            {
+                <td></td>
+            }
+        </tr>
+    }
+</table>

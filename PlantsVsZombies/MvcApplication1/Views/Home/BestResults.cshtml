@@ -1,0 +1,25 @@
+﻿@using Models
+@model List<GameResultViewModel>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Лучшие результаты";
+}
+
+<h2>@Html.ActionLink("Зомби против растений","Index", "Home") | Лучшие результаты 
+| @Html.ActionLink("Мои лучшие результаты","MyBestResults", "Home") | @Html.ActionLink("Выход", "Logout", "Account")</h2>
+<table>
+    <tr>
+        <th>Игрок</th>
+        <th>Результат</th>
+        <th>Дата и время</th>
+    </tr>
+    @foreach (GameResultViewModel res in Model)
+    { 
+        <tr>
+            <td>@res.UserName</td>
+            <td>@res.DestroyedZombies</td>
+            <td>@res.GameDate.ToShortDateString() @res.GameDate.ToShortTimeString()</td>    
+        </tr>
+    }
+</table>

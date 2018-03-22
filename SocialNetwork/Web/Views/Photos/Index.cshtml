@@ -1,0 +1,33 @@
+﻿@using Web
+@using Web.Models
+@model PhotosViewModel
+@{
+    ViewBag.Title = "Фотографии";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.UserName - фотографии</h2>
+@if (Model.UserIsMe)
+{
+    <p>@Html.ActionLink("Добавить фотографию", "NewPhoto")</p>
+}
+<table>
+    <tr>
+        <th>Дата создания</th>
+        <th>Фотография</th>
+        <th>Комментарий</th>
+        <th></th>
+    </tr>
+    @foreach (PhotoViewModel photo in Model.Photos)
+    { 
+        <tr>
+            <td>@photo.CreatedDate</td>
+            <td>@Html.Image("Image", photo.Id.ToString()) </td>
+            <td>@photo.Comment</td>
+            <td>
+                @Html.ActionLink("Удалить", "DeletePhoto", new {id = Model.UserId, photoId = photo.Id})
+            </td>
+        </tr>
+    }
+</table>
+
